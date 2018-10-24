@@ -4,8 +4,8 @@ xmin=0
 xmax=12
 ymin=0
 ymax=8
-dx=4
-dy=4
+dx=0.4
+dy=0.4
 kx=0.000001
 ky=0.000001
 hmax=13
@@ -27,7 +27,7 @@ hmed=(hmax+hmin)/2;
 h=zeros(nodes,1);
 Q=zeros(nodes,1);
 Ad=zeros(elements,1);
-velocity=zeros(elements,2);
+velocity=zeros(elements,3);
 vcoord=zeros(elements,2);
 vresult=zeros(elements,1);
 for i=1:elements
@@ -222,6 +222,11 @@ fprintf(fid, '<DataArray type="UInt8" Name="types" Format="ascii">\n');
 fprintf(fid, '%d \n',[type]);
 fprintf(fid, '</DataArray>\n');
 fprintf(fid, '</Cells>\n');
+fprintf(fid, '<CellData Vectors="Vectors">\n');
+fprintf(fid, '<DataArray type="Float64" Name="Velocity" NumberOfComponents = "3" Format="ascii">\n');
+fprintf(fid, '%d %d %d \n',[velocity].');
+fprintf(fid, '</DataArray>\n');
+fprintf(fid, '</CellData>\n');
 fprintf(fid, '<PointData Scalars="scalars">\n');
 fprintf(fid, '<DataArray type="Float32" Name="hh" Format="ascii">\n');
 fprintf(fid, '%d \n',[S]);
@@ -237,6 +242,6 @@ fprintf(fid, '</Piece>\n');
 fprintf(fid, '</UnstructuredGrid>\n');
 fprintf(fid, '</VTKFile>\n');
 
-
+%bkjbjk
 
 fclose(fid);
