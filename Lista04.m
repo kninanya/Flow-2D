@@ -4,8 +4,13 @@ xmin=0
 xmax=12
 ymin=0
 ymax=8
+<<<<<<< HEAD
 dx=1
 dy=1
+=======
+dx=0.5
+dy=0.5
+>>>>>>> e3ab0f2bb27e01a36e8ec793228690cefce8dc28
 kx=0.000001
 ky=0.000001
 hmax=13
@@ -86,7 +91,7 @@ for j=1:elements
         grauslibertade(b(j,k),j)=k;
     end
 end
-grauslibertade
+%grauslibertade
 
 for i=1:elements
     Ad(i,1)=abc(b(i,2),1)*abc(b(i,3),2)-abc(b(i,3),1)*abc(b(i,2),2)-abc(b(i,1),1)*abc(b(i,3),2)+abc(b(i,1),1)*abc(b(i,2),2)+abc(b(i,3),1)*abc(b(i,1),2)-abc(b(i,2),1)*abc(b(i,1),2);
@@ -138,7 +143,7 @@ end
 for i=1:nodes
     Q(i,1)=h(i,1);
 end
-Q
+%Q
 
 
 
@@ -164,15 +169,15 @@ end
 
 
     
-kglobal
+%kglobal
 hp=zeros(nodes,1)
 u=zeros(nodes,1)
 
-S=kglobal\Q
+S=kglobal\Q;
 for i=1:nodes
 hp(i,1)=S(i,1)-abc(i,2);
 end
-u=hp*10 %kPa
+u=hp*10; %kPa
 
 
 
@@ -185,16 +190,7 @@ for i=1:elements
         vresult(i,1)=(velocity(i,1)^2+velocity(i,2)^2)^0.5;
 end
 
-vcoord
-velocity
-vresult
 
-
-
-
-
-nodes
-elements
 fid=fopen('MyFile.vtu','w');
 fprintf(fid, '<?xml version="1.0"?>\n');
 fprintf(fid, '<VTKFile type="UnstructuredGrid\" version=\"0.1\" byte_order="LittleEndian">\n');
